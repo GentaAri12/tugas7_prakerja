@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Profil Saya</title>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="asset/css/styleVALUEJS.css">
     </head>
@@ -92,7 +93,7 @@
         </section>
 
         <section id="input-form">
-            <form method="#" action="#">
+            <form id="profileEditForm">
                 <div class="form">
                     <label>Nama</label>
                     <input id="inpName" type="text" name="nama" placeholder="masukkan nama anda">
@@ -122,7 +123,7 @@
                     <input id="inpEmail" type="email" name="email">
                 </div>            
                 <div class="form">
-                    <input onclick="simpanForm()" type="submit" name="submit" value="SUBMIT" class="bg-green">
+                    <input type="submit" name="submit" value="simpan" class="bg-green">
                 </div>
             </form>            
         </section>
@@ -182,27 +183,29 @@
             // function simpanForm(){
 
             // }
-            function simpanForm() {
-                    var name = document.getElementById("inpName").value;
-                    var role = document.getElementById("inpRole").value;
-                    var available = document.getElementById("inpAvailability").value;
-                    var usia = document.getElementById("inpUsia").value;
-                    var lokasi = document.getElementById("inpLokasi").value;
-                    var experience = document.getElementById("inpYears").value;
-                    var email = document.getElementById("inpEmail").value;
+            profileEditForm.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Mencegah pengiriman formulir
+
+                    var newName = document.getElementById("inpName").value;
+                    var newRole = document.getElementById("inpRole").value;
+                    var newAvailable = document.getElementById("inpAvailability").value;
+                    var newUsia = document.getElementById("inpUsia").value;
+                    var newLokasi = document.getElementById("inpLokasi").value;
+                    var newExperience = document.getElementById("inpYears").value;
+                    var newEmail = document.getElementById("inpEmail").value;
 
                     // Update profil dengan data yang baru disimpan
-                    document.getElementById("pName").innerHTML = name;
-                    document.getElementById("pRole").innerHTML = role;
-                    document.getElementById("pAvailable").innerHTML = available;
-                    document.getElementById("pAge").innerHTML = usia;
-                    document.getElementById("pLocation").innerHTML = lokasi;
-                    document.getElementById("pExperience").innerHTML = experience;
-                    document.getElementById("pEmail").innerHTML = email;
+                    document.getElementById("pName").textContent = newName;
+                    document.getElementById("pRole").textContent = newRole
+                    document.getElementById("pAvailable").textContent = newAvailable
+                    document.getElementById("pAge").textContent = newUsia
+                    document.getElementById("pLocation").textContent = newLokasi
+                    document.getElementById("pExperience").textContent = newExperience
+                    document.getElementById("pEmail").textContent = newEmail
 
                     // Sembunyikan formulir edit
                     formMenu.style.display = "none";
-                }
+                });
 
 
             function showMenu()
@@ -219,12 +222,5 @@
                 }
             }
         </script>
-
-
-
-
-
-
-
     </body>
 </html>
